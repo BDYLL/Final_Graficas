@@ -10,6 +10,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <mainwindow.h>
 
 using namespace std;
 
@@ -68,6 +69,7 @@ private:
 
 
 private:
+
     // Tamaño de la ventana
     GLint width = 800;
     GLint height = 600;

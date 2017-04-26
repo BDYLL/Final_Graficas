@@ -14,6 +14,13 @@ class SolverWindow : public QMainWindow
 public:
     explicit SolverWindow(QWidget *parent = 0);
     ~SolverWindow();
+signals:
+    void restoreMainWindow();
+private slots:
+
+    void on_scanNewCube_clicked();
+
+    void on_exitButton_clicked();
 
 private:
     Ui::SolverWindow *ui;

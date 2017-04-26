@@ -25,6 +25,7 @@ public:
 
 public slots:
     void openSolverWindow();
+    void restoreWindow();
 
 private slots:
     //Display video frame in player UI

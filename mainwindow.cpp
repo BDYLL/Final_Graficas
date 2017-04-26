@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     scanner = new RubikScanner();
 
     qRegisterMetaType<Mat>("Mat");
+
     QObject::connect(scanner, SIGNAL(videoStream(Mat)), this, SLOT(updatePlayerUI(Mat)));
     scanner->Play();
 
@@ -68,12 +69,17 @@ void MainWindow::on_nextScannedFace_clicked()
 
 void MainWindow::on_finishScan_clicked()
 {
+    this->hide();
     openSolverWindow();
-    this->close();
+}
+
+void MainWindow::restoreWindow(){
+    this->show();
 }
 
 void MainWindow::openSolverWindow(){
     solverWindow = new SolverWindow();
+    QObject::connect(this->solverWindow, SIGNAL(restoreMainWindow()), this, SLOT(restoreWindow()));
     solverWindow->show();
 }
 

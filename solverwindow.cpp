@@ -12,3 +12,15 @@ SolverWindow::~SolverWindow()
 {
     delete ui;
 }
+
+
+void SolverWindow::on_scanNewCube_clicked()
+{
+    emit restoreMainWindow();
+    this->close();
+}
+
+void SolverWindow::on_exitButton_clicked()
+{
+    this->close();
+}
