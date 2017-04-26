@@ -1,0 +1,54 @@
+Valores para colores:
+
+Naranja{
+	LowH: 0
+	High: 22
+	LowS: 60
+	HighS: 255
+	LowV: 130
+	HighV: 255
+}
+
+Amarillo{
+	LowH: 22
+	High: 38
+	LowS: 60
+	HighS: 255
+	LowV: 130
+	HighV: 255
+}
+
+Verde{
+	LowH: 38
+	HighH: 100
+	LowS: 80
+	HighS: 255
+	LowV: 80
+	HighV: 180
+	
+Azul{
+	LowH: 100
+	HighH: 130
+	LowS: 70
+	HighS: 255
+	LowV:80
+	Hi: 255
+	}
+	
+Rojo{
+	LowH: 160
+	High: 179
+	LowS: 0
+	HighS: 255
+	LowV:0
+	Hi:255
+	}
+	
+Blanco{
+	LowH: 0
+	High: 255
+	LowS:0
+	HighS:70
+	LowV:180
+	HighV:255
+
