@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 INCLUDEPATH += I/usr/include/   #Change this path for Ubuntu: /usr/local/include
-LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_videoio -lopencv_imgproc -lglut -lGLU -lGL
+LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_videoio -lopencv_imgproc -lglut -lGLU -lGL -lGLEW
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     hsvcolorrange.cpp \
     rubikpreview.cpp \
     solverwindow.cpp \
-    main_gl.cpp
+    main_gl.cpp \
+    openglcontext.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS  += \
     rubikscanner.h \
     hsvcolorrange.h \
     rubikpreview.h \
-    solverwindow.h
+    solverwindow.h \
+    openglcontext.h
 
 FORMS    += mainwindow.ui \
     solverwindow.ui
