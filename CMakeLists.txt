@@ -3,7 +3,11 @@ project(graficas_final)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES
+        Cubo.cpp
+        Cubo.h
+        RubikCube.cpp
+        )
 add_executable(graficas_final ${SOURCE_FILES})
 
 find_package(OpenGL REQUIRED)
