@@ -50,15 +50,15 @@ void rotateRight(bool clockWise){
         rubikCube[19] = tmp3;
         rubikCube[20] = tmp4;
 
-        rubikCube[0].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[1].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[2].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[9].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[10].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[11].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[18].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[19].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[20].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[0].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[1].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[2].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[9].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[10].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[11].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[18].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[19].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[20].increase_rots(0.0, 0.0, -90.0);   
     }else{
         Cube tmp1 = rubikCube[0];
         Cube tmp2 = rubikCube[1];
@@ -75,15 +75,15 @@ void rotateRight(bool clockWise){
         rubikCube[19] = tmp3;
         rubikCube[20] = tmp4;   
 
-        rubikCube[0].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[1].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[2].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[9].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[10].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[11].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[18].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[19].increase_rots(0.0, 0.0, -90.0);
-        rubikCube[20].increase_rots(0.0, 0.0, -90.0);   
+        rubikCube[0].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[1].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[2].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[9].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[10].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[11].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[18].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[19].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[20].increase_rots(0.0, 0.0, 90.0);        
     }
 }
 
@@ -113,12 +113,21 @@ void rotateLeft(bool clockWise){
         rubikCube[24].increase_rots(0.0, 0.0, -90.0);
         rubikCube[25].increase_rots(0.0, 0.0, -90.0);
         rubikCube[26].increase_rots(0.0, 0.0, -90.0);   
-
     }else{
         Cube tmp1 = rubikCube[6];
         Cube tmp2 = rubikCube[7];
         Cube tmp3 = rubikCube[17];
         Cube tmp4 = rubikCube[8];
+
+        rubikCube[6]  = rubikCube[24];
+        rubikCube[7]  = rubikCube[15];
+        rubikCube[8]  = tmp1;
+        rubikCube[15] = rubikCube[25];
+        rubikCube[16] = rubikCube[16];
+        rubikCube[17] = tmp2;
+        rubikCube[24] = rubikCube[26];
+        rubikCube[25] = tmp3;
+        rubikCube[26] = tmp4; 
 
         rubikCube[6].increase_rots(0.0, 0.0, 90.0);
         rubikCube[7].increase_rots(0.0, 0.0, 90.0);
@@ -128,7 +137,7 @@ void rotateLeft(bool clockWise){
         rubikCube[17].increase_rots(0.0, 0.0, 90.0);
         rubikCube[24].increase_rots(0.0, 0.0, 90.0);
         rubikCube[25].increase_rots(0.0, 0.0, 90.0);
-        rubikCube[26].increase_rots(0.0, 0.0, 90.0);       
+        rubikCube[26].increase_rots(0.0, 0.0, 90.0); 
     }
 }
 
@@ -143,7 +152,7 @@ void rotateFront(bool clockWise){
         rubikCube[3]  = rubikCube[9];
         rubikCube[0]  = rubikCube[18];
         rubikCube[15]  = tmp1;
-        rubikCube[10] = rubikCube[10];
+        rubikCube[13] = rubikCube[13];
         rubikCube[9] = rubikCube[21];       
         rubikCube[24] = tmp2;
         rubikCube[21] = tmp3;
@@ -153,7 +162,7 @@ void rotateFront(bool clockWise){
         rubikCube[3].increase_rots(90.0, 0.0, 0.0);
         rubikCube[0].increase_rots(90.0, 0.0, 0.0);
         rubikCube[15].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[10].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[13].increase_rots(90.0, 0.0, 0.0);
         rubikCube[9].increase_rots(90.0, 0.0, 0.0);
         rubikCube[24].increase_rots(90.0, 0.0, 0.0);
         rubikCube[21].increase_rots(90.0, 0.0, 0.0);
@@ -168,7 +177,7 @@ void rotateFront(bool clockWise){
         rubikCube[3]  = rubikCube[15];
         rubikCube[0]  = tmp1;
         rubikCube[15]  = rubikCube[21];
-        rubikCube[10] = rubikCube[10];
+        rubikCube[13] = rubikCube[13];
         rubikCube[9] = tmp2;
         rubikCube[24] = rubikCube[18];
         rubikCube[21] = tmp3;
@@ -178,7 +187,7 @@ void rotateFront(bool clockWise){
         rubikCube[3].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[0].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[15].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[10].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[13].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[9].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[24].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[21].increase_rots(-90.0, 0.0, 0.0);
@@ -203,15 +212,15 @@ void rotateBack(bool clockWise){
         rubikCube[23] = tmp3;
         rubikCube[26] = tmp4;
 
-        rubikCube[2].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[5].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[8].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[11].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[14].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[17].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[20].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[23].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[26].increase_rots(90.0, 0.0, 0.0);  
+        rubikCube[2].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[5].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[8].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[11].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[14].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[17].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[20].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[23].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[26].increase_rots(-90.0, 0.0, 0.0);   
     }else{
         Cube tmp1 = rubikCube[2];
         Cube tmp2 = rubikCube[5];
@@ -227,16 +236,16 @@ void rotateBack(bool clockWise){
         rubikCube[20] = rubikCube[26];
         rubikCube[23] = tmp3;
         rubikCube[26] = tmp4;
-
-        rubikCube[2].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[5].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[8].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[11].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[14].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[17].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[20].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[23].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[26].increase_rots(-90.0, 0.0, 0.0);      
+     
+        rubikCube[2].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[5].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[8].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[11].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[14].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[17].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[20].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[23].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[26].increase_rots(90.0, 0.0, 0.0);    
     }
 }
 
@@ -256,16 +265,17 @@ void rotateUp(bool clockWise){
         rubikCube[24] = tmp2;
         rubikCube[25] = tmp3;
         rubikCube[26] = tmp4;
-
-        rubikCube[18].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[19].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[20].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[21].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[22].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[23].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[24].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[25].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[26].increase_rots(0.0, 90.0, 0.0); 
+  
+        rubikCube[18].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[19].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[20].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[21].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[22].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[23].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[24].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[25].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[26].increase_rots(0.0, -90.0, 0.0); 
+  
     }else{
         Cube tmp1 = rubikCube[18];
         Cube tmp2 = rubikCube[19];
@@ -280,17 +290,17 @@ void rotateUp(bool clockWise){
         rubikCube[23] = tmp2;
         rubikCube[24] = rubikCube[26];
         rubikCube[25] = tmp3;
-        rubikCube[26] = tmp4;
+        rubikCube[26] = tmp4;   
 
-        rubikCube[18].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[19].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[20].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[21].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[22].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[23].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[24].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[25].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[26].increase_rots(0.0, -90.0, 0.0);        
+        rubikCube[18].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[19].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[20].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[21].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[22].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[23].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[24].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[25].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[26].increase_rots(0.0, 90.0, 0.0);               
     }
 }
 
@@ -311,15 +321,15 @@ void rotateDown(bool clockWise){
         rubikCube[7] = tmp3;
         rubikCube[8] = tmp4;
 
-        rubikCube[0].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[1].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[2].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[3].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[4].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[5].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[6].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[7].increase_rots(0.0, 90.0, 0.0);
-        rubikCube[8].increase_rots(0.0, 90.0, 0.0); 
+        rubikCube[0].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[1].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[2].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[3].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[4].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[5].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[6].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[7].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[8].increase_rots(0.0, -90.0, 0.0);     
     }else{
         Cube tmp1 = rubikCube[0];
         Cube tmp2 = rubikCube[1];
@@ -336,16 +346,15 @@ void rotateDown(bool clockWise){
         rubikCube[7] = tmp3;
         rubikCube[8] = tmp4;
 
-        rubikCube[0].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[1].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[2].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[3].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[4].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[5].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[6].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[7].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[8].increase_rots(0.0, -90.0, 0.0); 
-
+        rubikCube[0].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[1].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[2].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[3].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[4].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[5].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[6].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[7].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[8].increase_rots(0.0, 90.0, 0.0); 
     }
 }
 
@@ -368,7 +377,6 @@ void init()
 	GLfloat colorWhite[]  = {1.0, 1.0, 1.0 };
 	GLfloat colorBlack[]  = {  0,   0,   0 };
 
-    /*
     rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
     rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
     rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
@@ -404,84 +412,6 @@ void init()
     rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
     rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
     rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-
-
-    */
-
-
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
-
-    /*
-	rubikCube[0] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0);	
-	rubikCube[1] = Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[2] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);
-
-    rubikCube[3] = Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0);
-    rubikCube[4] = Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[5] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);
-
-    rubikCube[6] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0);
-    rubikCube[7] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);     
-    rubikCube[8] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);
-
-    rubikCube[9] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0);
-    rubikCube[10] = Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[11] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
-
-    rubikCube[12] = Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0);
-    rubikCube[13] = Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
-    rubikCube[14] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
-
-    rubikCube[15] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[16] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[17] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
-
-    rubikCube[18] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-    rubikCube[19] = Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-    rubikCube[20] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-
-    rubikCube[21] = Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-    rubikCube[22] = Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-    rubikCube[23] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-
-    rubikCube[24] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0); 
-    rubikCube[25] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-    rubikCube[26] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
-     */
 }
 
 // Función que se invoca cada vez que se redimensiona la ventana
