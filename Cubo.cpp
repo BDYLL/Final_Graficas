@@ -110,3 +110,9 @@ void Cube::set_rots (float rX, float rY, float rZ) {
     rotY = rY;
     rotZ = rZ;
 }
+
+void Cube::increase_rots (float rX, float rY, float rZ) {
+    rotX += rX;
+    rotY += rY;
+    rotZ += rZ;
+}

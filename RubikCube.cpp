@@ -30,374 +30,8 @@ GLfloat zoomZ = -55.f;
 GLfloat rot = 0.;
 float spaceBetweenCubes = 2.1f;
 
-
-
 // Cube rubikCube[27];
 std::vector<Cube> rubikCube;
-
-/*
-//White Red
-void glutTexturedCube2(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-
-    if(position==2){
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6); 
-    }else if(position==4){
-        glRotatef(90, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(-90, 0.0, 1.0, 0.0);
-    }else if(position==6){
-        glRotatef(-90, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(90, 0.0, 1.0, 0.0);
-    }else if(position==8){
-        glRotatef(180, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(-180, 0.0, 1.0, 0.0);
-    }
-    else if(position==10){
-        glRotatef(-90, 0.0, 0.0, 1.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(90, 0.0, 0.0, 1.0);   
-    }else if(position==12){
-        glRotatef(90, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(-90, 0.0, 1.0, 0.0);
-    }else if(position==16){
-        glRotatef(-90, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(90, 0.0, 1.0, 0.0);
-    }else if(position==18){
-        glRotatef(180, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(-180, 0.0, 1.0, 0.0);
-    }else if(position==20){
-        glRotatef(180, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(-180, 0.0, 1.0, 0.0);
-    }else if(position==22){
-        glRotatef(-90, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(90, 0.0, 1.0, 0.0);
-    }else if(position==24){
-        glRotatef(180, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(-180, 0.0, 1.0, 0.0);
-    }else if(position==26){
-        glRotatef(180, 0.0, 1.0, 0.0);
-        glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-        glRotatef(-180, 0.0, 1.0, 0.0);
-    }   
-} 
-
-//White Red Green
-void glutTexturedCube3(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Blue White
-void glutTexturedCube4(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//White
-void glutTexturedCube5(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//White Green
-void glutTexturedCube6(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//White Orange Blue
-void glutTexturedCube7(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//White Orange
-void glutTexturedCube8(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//White Green Orange
-void glutTexturedCube9(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Blue Red
-void glutTexturedCube10(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Red
-void glutTexturedCube11(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Red Green
-void glutTexturedCube12(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Blue
-void glutTexturedCube13(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//El centro del cubo rubik
-void glutTexturedCube14(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Green
-void glutTexturedCube15(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Orange Blue
-void glutTexturedCube16(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Orange
-void glutTexturedCube17(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Green Orange
-void glutTexturedCube18(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = {   0,   0,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Blue Yellow Red
-void glutTexturedCube19(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Yellow Red
-void glutTexturedCube20(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Yellow Red Green
-void glutTexturedCube21(GLdouble size, int position)
-{
-    GLfloat color1[] = { 255,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Blue Yellow
-void glutTexturedCube22(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Yellow
-void glutTexturedCube23(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Yellow Green
-void glutTexturedCube24(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   0,   0,   0 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Yellow Orange Blue
-void glutTexturedCube25(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0, 255 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Yellow Orange
-void glutTexturedCube26(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,   0,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-//Yellow Orange Green
-void glutTexturedCube27(GLdouble size, int position)
-{
-    GLfloat color1[] = {   0,   0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0,   0,   0 };
-    GLfloat color5[] = {   0,   0,   0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-} 
-
-*/
-
 
 void rotateRight(bool clockWise){
     if(clockWise){      
@@ -415,6 +49,16 @@ void rotateRight(bool clockWise){
         rubikCube[18] = tmp2;
         rubikCube[19] = tmp3;
         rubikCube[20] = tmp4;
+
+        rubikCube[0].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[1].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[2].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[9].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[10].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[11].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[18].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[19].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[20].increase_rots(0.0, 0.0, 90.0);
     }else{
         Cube tmp1 = rubikCube[0];
         Cube tmp2 = rubikCube[1];
@@ -429,7 +73,17 @@ void rotateRight(bool clockWise){
         rubikCube[11] = tmp2;
         rubikCube[18] = rubikCube[20];
         rubikCube[19] = tmp3;
-        rubikCube[20] = tmp4;       
+        rubikCube[20] = tmp4;   
+
+        rubikCube[0].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[1].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[2].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[9].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[10].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[11].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[18].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[19].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[20].increase_rots(0.0, 0.0, -90.0);   
     }
 }
 
@@ -449,21 +103,32 @@ void rotateLeft(bool clockWise){
         rubikCube[24] = tmp2;
         rubikCube[25] = tmp3;
         rubikCube[26] = tmp4;
+
+        rubikCube[6].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[7].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[8].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[15].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[16].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[17].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[24].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[25].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[26].increase_rots(0.0, 0.0, -90.0);   
+
     }else{
         Cube tmp1 = rubikCube[6];
         Cube tmp2 = rubikCube[7];
         Cube tmp3 = rubikCube[17];
         Cube tmp4 = rubikCube[8];
 
-        rubikCube[6]  = rubikCube[24];
-        rubikCube[7]  = rubikCube[15];
-        rubikCube[8]  = tmp1;
-        rubikCube[15] = rubikCube[25];
-        rubikCube[16] = rubikCube[16];
-        rubikCube[17] = tmp2;
-        rubikCube[24] = rubikCube[26];
-        rubikCube[25] = tmp3;
-        rubikCube[26] = tmp4;       
+        rubikCube[6].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[7].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[8].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[15].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[16].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[17].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[24].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[25].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[26].increase_rots(0.0, 0.0, 90.0);       
     }
 }
 
@@ -483,6 +148,16 @@ void rotateFront(bool clockWise){
         rubikCube[24] = tmp2;
         rubikCube[21] = tmp3;
         rubikCube[18] = tmp4;
+
+        rubikCube[6].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[3].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[0].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[15].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[10].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[9].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[24].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[21].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[18].increase_rots(90.0, 0.0, 0.0);   
     }else{
         Cube tmp1 = rubikCube[6];
         Cube tmp2 = rubikCube[3];
@@ -497,7 +172,17 @@ void rotateFront(bool clockWise){
         rubikCube[9] = tmp2;
         rubikCube[24] = rubikCube[18];
         rubikCube[21] = tmp3;
-        rubikCube[18] = tmp4;       
+        rubikCube[18] = tmp4;
+
+        rubikCube[6].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[3].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[0].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[15].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[10].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[9].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[24].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[21].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[18].increase_rots(-90.0, 0.0, 0.0);              
     }
 }
 
@@ -517,6 +202,16 @@ void rotateBack(bool clockWise){
         rubikCube[20] = tmp2;
         rubikCube[23] = tmp3;
         rubikCube[26] = tmp4;
+
+        rubikCube[2].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[5].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[8].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[11].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[14].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[17].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[20].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[23].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[26].increase_rots(90.0, 0.0, 0.0);  
     }else{
         Cube tmp1 = rubikCube[2];
         Cube tmp2 = rubikCube[5];
@@ -531,7 +226,17 @@ void rotateBack(bool clockWise){
         rubikCube[17] = tmp2;
         rubikCube[20] = rubikCube[26];
         rubikCube[23] = tmp3;
-        rubikCube[26] = tmp4;       
+        rubikCube[26] = tmp4;
+
+        rubikCube[2].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[5].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[8].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[11].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[14].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[17].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[20].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[23].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[26].increase_rots(-90.0, 0.0, 0.0);      
     }
 }
 
@@ -551,6 +256,16 @@ void rotateUp(bool clockWise){
         rubikCube[24] = tmp2;
         rubikCube[25] = tmp3;
         rubikCube[26] = tmp4;
+
+        rubikCube[18].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[19].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[20].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[21].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[22].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[23].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[24].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[25].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[26].increase_rots(0.0, 90.0, 0.0); 
     }else{
         Cube tmp1 = rubikCube[18];
         Cube tmp2 = rubikCube[19];
@@ -565,7 +280,17 @@ void rotateUp(bool clockWise){
         rubikCube[23] = tmp2;
         rubikCube[24] = rubikCube[26];
         rubikCube[25] = tmp3;
-        rubikCube[26] = tmp4;       
+        rubikCube[26] = tmp4;
+
+        rubikCube[18].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[19].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[20].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[21].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[22].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[23].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[24].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[25].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[26].increase_rots(0.0, -90.0, 0.0);        
     }
 }
 
@@ -585,6 +310,16 @@ void rotateDown(bool clockWise){
         rubikCube[6] = tmp2;
         rubikCube[7] = tmp3;
         rubikCube[8] = tmp4;
+
+        rubikCube[0].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[1].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[2].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[3].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[4].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[5].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[6].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[7].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[8].increase_rots(0.0, 90.0, 0.0); 
     }else{
         Cube tmp1 = rubikCube[0];
         Cube tmp2 = rubikCube[1];
@@ -599,7 +334,18 @@ void rotateDown(bool clockWise){
         rubikCube[5] = tmp2;
         rubikCube[6] = rubikCube[8];
         rubikCube[7] = tmp3;
-        rubikCube[8] = tmp4;        
+        rubikCube[8] = tmp4;
+
+        rubikCube[0].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[1].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[2].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[3].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[4].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[5].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[6].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[7].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[8].increase_rots(0.0, -90.0, 0.0); 
+
     }
 }
 

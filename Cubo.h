@@ -104,6 +104,7 @@ class Cube {
         glDisableClientState(GL_VERTEX_ARRAY);
     }
     void set_rots (float rX, float rY, float rZ);
+    void increase_rots (float rX, float rY, float rZ);
 };
 
 #endif
