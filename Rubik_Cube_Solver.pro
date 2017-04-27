@@ -24,7 +24,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 INCLUDEPATH += I/usr/include/   #Change this path for Ubuntu: /usr/local/include
+INCLUDEPATH += /usr/include/python2.7/
 LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_videoio -lopencv_imgproc -lglut -lGLU -lGL -lGLEW
+LIBS += -L/usr/lib -lpython2.7
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -44,9 +46,12 @@ HEADERS  += \
     rubikpreview.h \
     solverwindow.h \
     openglcontext.h \
-    constans.h
+    constans.h \
+    rubiksolveralgorithms.h \
+    pyhelper.h
 
 FORMS    += mainwindow.ui \
     solverwindow.ui
 
-DISTFILES +=
+DISTFILES += \
+    rubiks.py

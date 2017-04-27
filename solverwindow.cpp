@@ -1,5 +1,6 @@
 #include "solverwindow.h"
 #include "ui_solverwindow.h"
+#include <QDir>
 
 using namespace std;
 
@@ -35,6 +36,9 @@ void SolverWindow::receiveCubeData(vector<vector<vector<int>>> faces){
 }
 
 void SolverWindow::resolveRubikCube(){
-    vector <string> v ("FL" ,"RB" ,"LB" ,"LD" ,"DB" ,"DF" ,"DR","UR" ,"UB" ,"FU" ,"UL" ,"FR" ,"FRU" ,"BRD" ,"ULF" ,"BUR" ,"LBD" ,"DRF" ,"BLU" ,"DFL");
-    mix_golf_algorithm(v.size(), v);
+    vector <string> v ({"FL" ,"RB" ,"LB" ,"LD" ,"DB" ,"DF" ,"DR","UR" ,"UB" ,"FU" ,"UL" ,"FR" ,"FRU" ,"BRD" ,"ULF" ,"BUR" ,"LBD" ,"DRF" ,"BLU" ,"DFL"});
+    QString path = QDir::currentPath();
+    cout << path.toStdString() <<endl;
+
+    mixedMethod(v.size(), v);
 }

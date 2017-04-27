@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <vector>
-#include "rubiksolveralgorithms.cpp"
+#include <rubiksolveralgorithms.h>
 
 using namespace std;
 
