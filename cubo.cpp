@@ -41,53 +41,11 @@ GLfloat colorWhite[]  = {255,255,255};
 GLfloat colorBlack[]  = {  0,   0,  0};
 */
 
-
-void glutTexturedCubeBase(GLdouble size, GLfloat* color1, GLfloat* color2, GLfloat* color3,
-                                        GLfloat* color4,GLfloat* color5, GLfloat* color6){
-
-GLfloat color[] = {
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-};
+class Cube {
+    GLfloat color[];
+    float rotX;
+    float rotY;
+    float rotZ;
 
     GLfloat vert[] = {
         // top (+z)
@@ -140,11 +98,11 @@ GLfloat color[] = {
     };
 
     GLushort idxs[] = { 
-         0, 1, 2, 
-         3, 4, 5,
+        0, 1, 2, 
+        3, 4, 5,
 
-         6, 7, 8,
-         9,10,11,
+        6, 7, 8,
+        9,10,11,
 
         12,13,14,
         15,16,17,
@@ -159,19 +117,187 @@ GLfloat color[] = {
         33,34,35
     };
 
-    glEnableClientState(GL_COLOR_ARRAY);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glColorPointer(3, GL_FLOAT, 0, color);
-    glVertexPointer(3, GL_FLOAT, 0, vert);
+  public:
+    Cube (GLfloat*,GLfloat*,GLfloat*,GLfloat*,GLfloat*,GLfloat*,float, float, float);
+    // GLfloat representa el color de una de las caras: {1.0, 1.0, 1.0}
+    void set_colors (GLfloat*,GLfloat*,GLfloat*,GLfloat*,GLfloat*,GLfloat*);
+    void set_colors (float, float, float);
+    void paint () {
+        glEnableClientState(GL_COLOR_ARRAY);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glColorPointer(3, GL_FLOAT, 0, color);
+        glVertexPointer(3, GL_FLOAT, 0, vert);
 
-    glPushMatrix();
-    glColor4f(1, 1, 1, 1);
-    glScaled(size, size, size);
-    glDrawElements(GL_TRIANGLES, sizeof(idxs)/sizeof(idxs[0]), GL_UNSIGNED_SHORT, idxs);
-    glPopMatrix();
+        glPushMatrix();
+        glColor4f(1, 1, 1, 1);
+        glScaled(1, 1, 1);
+        glRotatef(rotX, 1.0, 0.0, 0.0);
+        glRotatef(rotY, 0.0, 1.0, 0.0);
+        glRotatef(rotZ, 0.0, 0.0, 1.0);
+        glDrawElements(GL_TRIANGLES, sizeof(idxs)/sizeof(idxs[0]), GL_UNSIGNED_SHORT, idxs);
+        glPopMatrix();
 
-    glDisableClientState(GL_COLOR_ARRAY);
-    glDisableClientState(GL_VERTEX_ARRAY);
+        glDisableClientState(GL_COLOR_ARRAY);
+        glDisableClientState(GL_VERTEX_ARRAY);
+    }
+};
+
+Cube::Cube (GLfloat* color1, GLfloat* color2, GLfloat* color3,
+            GLfloat* color4,GLfloat* color5, GLfloat* color6, float rX, float rY, float rZ) {
+    rotX = rX;
+    rotY = rY;
+    rotZ = rZ;
+
+    color[] = {
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+    };
+
+}
+
+void Cube::set_colors (GLfloat* color1, GLfloat* color2, GLfloat* color3,
+                    GLfloat* color4,GLfloat* color5, GLfloat* color6) {
+    color[] = {
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+        color1[0], color1[1], color1[2],
+
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+        color2[0], color2[1], color2[2],
+
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+        color3[0], color3[1], color3[2],
+
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+        color4[0], color4[1], color4[2],
+
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+        color5[0], color5[1], color5[2],
+
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2],
+    };
+}
+
+void Cube::set_rots (float rX, float rY, float rZ) {
+    rotX = rx;
+    rotY = rY;
+    rotZ = rZ;
+}
+
+
+
+
+void glutTexturedCubeBase(GLdouble size, GLfloat* color1, GLfloat* color2, GLfloat* color3,
+                                        GLfloat* color4,GLfloat* color5, GLfloat* color6){
+
+GLfloat color[] = {
+    color1[0], color1[1], color1[2],
+    color1[0], color1[1], color1[2],
+    color1[0], color1[1], color1[2],
+    color1[0], color1[1], color1[2],
+    color1[0], color1[1], color1[2],
+    color1[0], color1[1], color1[2],
+
+    color2[0], color2[1], color2[2],
+    color2[0], color2[1], color2[2],
+    color2[0], color2[1], color2[2],
+    color2[0], color2[1], color2[2],
+    color2[0], color2[1], color2[2],
+    color2[0], color2[1], color2[2],
+
+    color3[0], color3[1], color3[2],
+    color3[0], color3[1], color3[2],
+    color3[0], color3[1], color3[2],
+    color3[0], color3[1], color3[2],
+    color3[0], color3[1], color3[2],
+    color3[0], color3[1], color3[2],
+
+    color4[0], color4[1], color4[2],
+    color4[0], color4[1], color4[2],
+    color4[0], color4[1], color4[2],
+    color4[0], color4[1], color4[2],
+    color4[0], color4[1], color4[2],
+    color4[0], color4[1], color4[2],
+
+    color5[0], color5[1], color5[2],
+    color5[0], color5[1], color5[2],
+    color5[0], color5[1], color5[2],
+    color5[0], color5[1], color5[2],
+    color5[0], color5[1], color5[2],
+    color5[0], color5[1], color5[2],
+
+    color6[0], color6[1], color6[2],
+    color6[0], color6[1], color6[2],
+    color6[0], color6[1], color6[2],
+    color6[0], color6[1], color6[2],
+    color6[0], color6[1], color6[2],
+    color6[0], color6[1], color6[2],
+};
+
+
 }
 
 
