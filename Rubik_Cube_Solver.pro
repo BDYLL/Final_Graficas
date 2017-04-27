@@ -36,7 +36,9 @@ SOURCES += main.cpp\
     solverwindow.cpp \
     main_gl.cpp \
     openglcontext.cpp \
-    rubiksolveralgorithms.cpp
+    rubiksolveralgorithms.cpp \
+    RubikCube.cpp \
+    Cubo.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -48,7 +50,8 @@ HEADERS  += \
     openglcontext.h \
     constans.h \
     rubiksolveralgorithms.h \
-    pyhelper.h
+    pyhelper.h \
+    Cubo.h
 
 FORMS    += mainwindow.ui \
     solverwindow.ui

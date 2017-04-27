@@ -1,4 +1,11 @@
 #include "openglcontext.h"
+#include <iostream>
+#include <cmath>
+
+#include <vector>
+#include "Cubo.h"
+
+using namespace std;
 
 OpenGLContext::OpenGLContext(QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
 {
@@ -9,15 +16,60 @@ OpenGLContext::OpenGLContext(QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleB
 }
 
 void OpenGLContext::initializeGL(){
+    //rubikCube.resize(27);
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glColor3f(1.f, 1.f, 1.f);
     glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_SMOOTH);
     glEnable(GL_CULL_FACE);
+
+    GLfloat colorRed[]    = {1.0,   0,   0 };
+    GLfloat colorGreen[]  = {  0, 1.0,   0 };
+    GLfloat colorBlue[]   = {  0,   0, 1.0 };
+    GLfloat colorOrange[] = {1.0, 0.5, 0.18};
+    GLfloat colorYellow[] = {1.0, 1.0,   0 };
+    GLfloat colorWhite[]  = {1.0, 1.0, 1.0 };
+    GLfloat colorBlack[]  = {  0,   0,   0 };
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
 }
 
 void OpenGLContext::paintGL(){
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	//Se limpian los buffers con el color activo definido por glClearColor
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Se limpian los buffers con el color activo definido por glClearColor
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -25,133 +77,103 @@ void OpenGLContext::paintGL(){
     glTranslatef(panX, panY, zoomZ);
     glRotatef(rotY, 1.0, 0.0, 0.0);
     glRotatef(rotX, 0.0, 1.0, 0.0);
-
     // Escena
-    geomCoordSys(2.f);
-
 
     //##############
-    //		Pinta el primer nivel
+    //      Pinta el primer nivel
     //##############
 
-
-    //glutTexturedCube1(1);
-    drawCurrentCube(idOfCubes[0]);
+    rubikCube[0].paint();
 
     glPushMatrix();
         glTranslatef(spaceBetweenCubes,0.f,0.f);
-        //glutTexturedCube2(1);
-        drawCurrentCube(idOfCubes[1]);
+        rubikCube[1].paint();
         glTranslatef(spaceBetweenCubes,0.f,0.f);
-        //glutTexturedCube3(1);
-        drawCurrentCube(idOfCubes[2]);
+        rubikCube[2].paint();
     glPopMatrix();
 
     glPushMatrix();
         glTranslatef(0.f,0.f,-spaceBetweenCubes);
-        //glutTexturedCube4(1);
-        drawCurrentCube(idOfCubes[3]);
+        rubikCube[3].paint();
         glTranslatef(spaceBetweenCubes,0.f,0.f);
-        //glutTexturedCube5(1);
-        drawCurrentCube(idOfCubes[4]);
+        rubikCube[4].paint();
         glTranslatef(spaceBetweenCubes,0.f,0.f);
-        //glutTexturedCube6(1);
-        drawCurrentCube(idOfCubes[5]);
+        rubikCube[5].paint();
     glPopMatrix();
 
     glPushMatrix();
         glTranslatef(0.f,0.f,-spaceBetweenCubes*2);
-        //glutTexturedCube7(1);
-        drawCurrentCube(idOfCubes[6]);
+        rubikCube[6].paint();
         glTranslatef(spaceBetweenCubes,0.f,0.f);
-        //glutTexturedCube8(1);
-        drawCurrentCube(idOfCubes[7]);
+        rubikCube[7].paint();
         glTranslatef(spaceBetweenCubes,0.f,0.f);
-        //glutTexturedCube9(1);
-        drawCurrentCube(idOfCubes[8]);
+        rubikCube[8].paint();
     glPopMatrix();
 
     //##############
-    //		Pinta el segundo nivel
+    //      Pinta el segundo nivel
     //##############
     glPushMatrix();
         glTranslatef(0.f, spaceBetweenCubes, 0.f);
-        //glutTexturedCube10(1);
-        drawCurrentCube(idOfCubes[9]);
-
+        rubikCube[9].paint();
         glPushMatrix();
             glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube11(1);
-            drawCurrentCube(idOfCubes[10]);
+            rubikCube[10].paint();
             glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube12(1);
-            drawCurrentCube(idOfCubes[11]);
+            rubikCube[11].paint();
         glPopMatrix();
 
         glPushMatrix();
             glTranslatef(0.f,0.f,-spaceBetweenCubes);
-            //glutTexturedCube13(1);
-            drawCurrentCube(idOfCubes[12]);
+            rubikCube[12].paint();
             glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube14(1);
-            drawCurrentCube(idOfCubes[13]);
+            rubikCube[13].paint();
             glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube15(1);
-            drawCurrentCube(idOfCubes[14]);
+            rubikCube[14].paint();
         glPopMatrix();
 
         glPushMatrix();
             glTranslatef(0.f,0.f,-spaceBetweenCubes*2);
-            //glutTexturedCube16(1);
-            drawCurrentCube(idOfCubes[15]);
+            rubikCube[15].paint();
             glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube17(1);
-            drawCurrentCube(idOfCubes[16]);
+            rubikCube[16].paint();
             glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube18(1);
-            drawCurrentCube(idOfCubes[17]);
-        glPopMatrix();
-        //##############
-        //		Pinta el tercer nivel
-        //##############
-        glTranslatef(0.f, spaceBetweenCubes, 0.f);
-        //glutTexturedCube19(1);
-        drawCurrentCube(idOfCubes[18]);
-
-        glPushMatrix();
-            glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube20(1);
-            drawCurrentCube(idOfCubes[19]);
-            glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube21(1);
-            drawCurrentCube(idOfCubes[20]);
-        glPopMatrix();
-
-        glPushMatrix();
-            glTranslatef(0.f,0.f,-spaceBetweenCubes);
-            //glutTexturedCube22(1);
-            drawCurrentCube(idOfCubes[21]);
-            glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube23(1);
-            drawCurrentCube(idOfCubes[22]);
-            glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube24(1);
-            drawCurrentCube(idOfCubes[23]);
-        glPopMatrix();
-
-        glPushMatrix();
-            glTranslatef(0.f,0.f,-spaceBetweenCubes*2);
-            //glutTexturedCube25(1);
-            drawCurrentCube(idOfCubes[24]);
-            glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube26(1);
-            drawCurrentCube(idOfCubes[25]);
-            glTranslatef(spaceBetweenCubes,0.f,0.f);
-            //glutTexturedCube27(1);
-            drawCurrentCube(idOfCubes[26]);
+            rubikCube[17].paint();
         glPopMatrix();
     glPopMatrix();
 
+    //##############
+    //      Pinta el tercer nivel
+    //##############
+    glPushMatrix();
+        glTranslatef(0.f, spaceBetweenCubes*2, 0.f);
+        rubikCube[18].paint();
+
+        glPushMatrix();
+            glTranslatef(spaceBetweenCubes,0.f,0.f);
+            rubikCube[19].paint();
+            glTranslatef(spaceBetweenCubes,0.f,0.f);
+            rubikCube[20].paint();
+        glPopMatrix();
+
+        glPushMatrix();
+            glTranslatef(0.f,0.f,-spaceBetweenCubes);
+            rubikCube[21].paint();
+            glTranslatef(spaceBetweenCubes,0.f,0.f);
+            rubikCube[22].paint();
+            glTranslatef(spaceBetweenCubes,0.f,0.f);
+            rubikCube[23].paint();
+        glPopMatrix();
+
+        glPushMatrix();
+            glTranslatef(0.f,0.f,-spaceBetweenCubes*2);
+            rubikCube[24].paint();
+            glTranslatef(spaceBetweenCubes,0.f,0.f);
+            rubikCube[25].paint();
+            glTranslatef(spaceBetweenCubes,0.f,0.f);
+            rubikCube[26].paint();
+        glPopMatrix();
+    glPopMatrix();
 
     //glutSwapBuffers();			// Se intercambian buffers
 }
@@ -165,9 +187,9 @@ void OpenGLContext::resizeGL(int w, int h){
     height = h;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    perspectiveGL(25.f, (float)width / height, 0.1f, 1000.f);		// Transf. de Proyección en Perspectiva
+    gluPerspective(25.f, (float)width / height, 0.1f, 1000.f);      // Transf. de Proyección en Perspectiva
     glMatrixMode(GL_MODELVIEW);
-    glViewport(0, 0, width, height);								// Transf. de Viewport (mapeo al área de dibujo)
+    glViewport(0, 0, width, height);   								// Transf. de Viewport (mapeo al área de dibujo)
 }
 
 void OpenGLContext::mousePressEvent(QMouseEvent *e){
@@ -239,499 +261,361 @@ void OpenGLContext::mouseMoveEvent(QMouseEvent *event){
 
 void OpenGLContext::keyPressEvent(QKeyEvent *event){
     cout << "Key pressed: "<< event->key() << endl;
+    int key = event->key();
 
     if( event->key() == Qt::Key_F1){
         rotateRight(true);
         cout << "Rotate right" << endl;
+    }else if(key == Qt::Key_F2){
+        rotateRight(false);
+    }else if(key == Qt::Key_F3){
+        rotateLeft(true);
+    }else if(key == Qt::Key_F4){
+        rotateLeft(false);
+    }else if(key == Qt::Key_F5){
+        rotateFront(true);
+    }else if(key == Qt::Key_F6){
+        rotateFront(false);
+    }else if(key == Qt::Key_F7){
+        rotateBack(true);
+    }else if(key == Qt::Key_F8){
+        rotateBack(false);
+    }else if(key == Qt::Key_F9){
+        rotateUp(true);
+    }else if(key == Qt::Key_F10){
+        rotateUp(false);
+    }else if(key == Qt::Key_F11){
+        rotateDown(true);
+    }else if(key == Qt::Key_F12){
+        rotateDown(false);
     }
     //glutPostRedisplay();
     updateGL();
 }
 
-void OpenGLContext::glutTexturedCubeBase(GLdouble size, GLfloat* color1, GLfloat* color2, GLfloat* color3,
-                                        GLfloat* color4,GLfloat* color5, GLfloat* color6){
-
-GLfloat color[] = {
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-    color1[0], color1[1], color1[2],
-
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-    color2[0], color2[1], color2[2],
-
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-    color3[0], color3[1], color3[2],
-
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-    color4[0], color4[1], color4[2],
-
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-    color5[0], color5[1], color5[2],
-
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-    color6[0], color6[1], color6[2],
-};
-
-    GLfloat vert[] = {
-        // top (+z)
-        -1, -1,  1,
-         1, -1,  1,
-        -1,  1,  1,
-        -1,  1,  1,
-         1, -1,  1,
-         1,  1,  1,
-
-        // bottom (-z)
-        -1, -1, -1,
-        -1,  1, -1,
-         1, -1, -1,
-         1, -1, -1,
-        -1,  1, -1,
-         1,  1, -1,
-
-        // right (+x)
-         1, -1, -1,
-         1,  1, -1,
-         1, -1,  1,
-         1, -1,  1,
-         1,  1, -1,
-         1,  1,  1,
-
-        // left (-x)
-        -1, -1, -1,
-        -1, -1,  1,
-        -1,  1, -1,
-        -1,  1, -1,
-        -1, -1,  1,
-        -1,  1,  1,
-
-        // front (+y)
-        -1, -1, -1,
-         1, -1, -1,
-        -1, -1,  1,
-        -1, -1,  1,
-         1, -1, -1,
-         1, -1,  1,
-
-        // back (-y)
-        -1,  1, -1,
-        -1,  1,  1,
-         1,  1, -1,
-         1,  1, -1,
-        -1,  1,  1,
-         1,  1,  1,
-    };
-
-    GLushort idxs[] = {
-         0, 1, 2,
-         3, 4, 5,
-
-         6, 7, 8,
-         9,10,11,
-
-        12,13,14,
-        15,16,17,
-
-        18,19,20,
-        21,22,23,
-
-        24,25,26,
-        27,28,29,
-
-        30,31,32,
-        33,34,35
-    };
-
-    glEnableClientState(GL_COLOR_ARRAY);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glColorPointer(3, GL_FLOAT, 0, color);
-    glVertexPointer(3, GL_FLOAT, 0, vert);
-
-    glPushMatrix();
-    glColor4f(1, 1, 1, 1);
-    glScaled(size, size, size);
-    glDrawElements(GL_TRIANGLES, sizeof(idxs)/sizeof(idxs[0]), GL_UNSIGNED_SHORT, idxs);
-    glPopMatrix();
-
-    glDisableClientState(GL_COLOR_ARRAY);
-    glDisableClientState(GL_VERTEX_ARRAY);
-}
-
-//Blue White Red
-void OpenGLContext::glutTexturedCube1(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,	0,	 0 };
-    GLfloat color4[] = {   0,	0, 255 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//White Red
-void OpenGLContext::glutTexturedCube2(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,	 0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,	0,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//White Red Green
-void OpenGLContext::glutTexturedCube3(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0, 255,	 0 };
-    GLfloat color4[] = {   0,	0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Blue White
-void OpenGLContext::glutTexturedCube4(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,   0,	 0 };
-    GLfloat color4[] = {   0,	0, 255 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//White
-void OpenGLContext::glutTexturedCube5(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,   0,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//White Green
-void OpenGLContext::glutTexturedCube6(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0, 255,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//White Orange Blue
-void OpenGLContext::glutTexturedCube7(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,	0,   0 };
-    GLfloat color4[] = {   0, 	0, 255 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//White Orange
-void OpenGLContext::glutTexturedCube8(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,	0,   0 };
-    GLfloat color4[] = {   0, 	0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//White Green Orange
-void OpenGLContext::glutTexturedCube9(GLdouble size)
-{
-    GLfloat color1[] = {   0, 	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0, 	0,   0 };
-    GLfloat color5[] = { 255, 255, 255 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Blue Red
-void OpenGLContext::glutTexturedCube10(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,	0,	 0 };
-    GLfloat color4[] = {   0,	0, 255 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Red
-void OpenGLContext::glutTexturedCube11(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,	 0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,	0,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Red Green
-void OpenGLContext::glutTexturedCube12(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0, 255,	 0 };
-    GLfloat color4[] = {   0,	0,   0 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Blue
-void OpenGLContext::glutTexturedCube13(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,   0,	 0 };
-    GLfloat color4[] = {   0,	0, 255 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//El centro del cubo rubik
-void OpenGLContext::glutTexturedCube14(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,   0,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Green
-void OpenGLContext::glutTexturedCube15(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0, 255,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Orange Blue
-void OpenGLContext::glutTexturedCube16(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,	0,   0 };
-    GLfloat color4[] = {   0, 	0, 255 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Orange
-void OpenGLContext::glutTexturedCube17(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,	0,   0 };
-    GLfloat color4[] = {   0, 	0,   0 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Green Orange
-void OpenGLContext::glutTexturedCube18(GLdouble size)
-{
-    GLfloat color1[] = {   0, 	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0, 	0,   0 };
-    GLfloat color5[] = {   0,	0,   0 };
-    GLfloat color6[] = {   0,	0,	 0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Blue Yellow Red
-void OpenGLContext::glutTexturedCube19(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,	0,	 0 };
-    GLfloat color4[] = {   0,	0, 255 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Yellow Red
-void OpenGLContext::glutTexturedCube20(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,	 0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,	0,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Yellow Red Green
-void OpenGLContext::glutTexturedCube21(GLdouble size)
-{
-    GLfloat color1[] = { 255,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0, 255,	 0 };
-    GLfloat color4[] = {   0,	0,   0 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Blue Yellow
-void OpenGLContext::glutTexturedCube22(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,   0,	 0 };
-    GLfloat color4[] = {   0,	0, 255 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Yellow
-void OpenGLContext::glutTexturedCube23(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0,   0,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Yellow Green
-void OpenGLContext::glutTexturedCube24(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   0,	0,   0 };
-    GLfloat color3[] = {   0, 255,	 0 };
-    GLfloat color4[] = {   0,	0,	 0 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Yellow Orange Blue
-void OpenGLContext::glutTexturedCube25(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,	0,   0 };
-    GLfloat color4[] = {   0, 	0, 255 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Yellow Orange
-void OpenGLContext::glutTexturedCube26(GLdouble size)
-{
-    GLfloat color1[] = {   0,	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0,	0,   0 };
-    GLfloat color4[] = {   0, 	0,   0 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
-
-//Yellow Orange Green
-void OpenGLContext::glutTexturedCube27(GLdouble size)
-{
-    GLfloat color1[] = {   0, 	0,   0 };
-    GLfloat color2[] = {   1,0.54,0.18 };
-    GLfloat color3[] = {   0, 255,   0 };
-    GLfloat color4[] = {   0, 	0,   0 };
-    GLfloat color5[] = {   0,	0,	 0 };
-    GLfloat color6[] = { 255, 255,   0 };
-    glutTexturedCubeBase(size, color1, color2, color3, color4, color5, color6);
-}
 
 void OpenGLContext::rotateRight(bool clockWise){
     if(clockWise){
-        int tmp1 = idOfCubes[1];
-        int tmp2 = idOfCubes[2];
-        int tmp3 = idOfCubes[19];
+        Cube tmp1 = rubikCube[1];
+        Cube tmp2 = rubikCube[0];
+        Cube tmp3 = rubikCube[9];
+        Cube tmp4 = rubikCube[18];
 
-        idOfCubes[1]  = idOfCubes[3];
-        idOfCubes[3]  = idOfCubes[21];
-        idOfCubes[21] = idOfCubes[19];
-        idOfCubes[19] = tmp1;
-        idOfCubes[2]  = idOfCubes[12];
-        idOfCubes[12] = idOfCubes[20];
-        idOfCubes[20] = idOfCubes[10];
-        idOfCubes[10] = tmp2;
-        idOfCubes[21] = tmp3;
+        rubikCube[0]  = rubikCube[2];
+        rubikCube[1]  = rubikCube[11];
+        rubikCube[2]  = rubikCube[20];
+        rubikCube[9]  = tmp1;
+        rubikCube[10] = rubikCube[10];
+        rubikCube[11] = rubikCube[19];
+        rubikCube[18] = tmp2;
+        rubikCube[19] = tmp3;
+        rubikCube[20] = tmp4;
+
+        rubikCube[0].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[1].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[2].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[9].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[10].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[11].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[18].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[19].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[20].increase_rots(0.0, 0.0, -90.0);
     }else{
-        int tmp1 = idOfCubes[1];
-        int tmp2 = idOfCubes[21];
-        int tmp3 = idOfCubes[20];
+        Cube tmp1 = rubikCube[0];
+        Cube tmp2 = rubikCube[1];
+        Cube tmp3 = rubikCube[11];
+        Cube tmp4 = rubikCube[2];
 
-        idOfCubes[1]  = idOfCubes[19];
-        idOfCubes[19] = idOfCubes[21];
-        idOfCubes[21] = idOfCubes[3];
-        idOfCubes[3]  = tmp1;
-        idOfCubes[2]  = idOfCubes[10];
-        idOfCubes[10] = idOfCubes[20];
-        idOfCubes[20] = idOfCubes[12];
-        idOfCubes[12] = tmp2;
+        rubikCube[0]  = rubikCube[18];
+        rubikCube[1]  = rubikCube[9];
+        rubikCube[2]  = tmp1;
+        rubikCube[9]  = rubikCube[19];
+        rubikCube[10] = rubikCube[10];
+        rubikCube[11] = tmp2;
+        rubikCube[18] = rubikCube[20];
+        rubikCube[19] = tmp3;
+        rubikCube[20] = tmp4;
+
+        rubikCube[0].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[1].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[2].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[9].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[10].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[11].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[18].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[19].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[20].increase_rots(0.0, 0.0, 90.0);
+    }
+}
+
+void OpenGLContext::rotateLeft(bool clockWise){
+    if(clockWise){
+        Cube tmp1 = rubikCube[7];
+        Cube tmp2 = rubikCube[6];
+        Cube tmp3 = rubikCube[15];
+        Cube tmp4 = rubikCube[24];
+
+        rubikCube[6]  = rubikCube[8];
+        rubikCube[7]  = rubikCube[17];
+        rubikCube[8] = rubikCube[26];
+        rubikCube[15] = tmp1;
+        rubikCube[16] = rubikCube[16];
+        rubikCube[17] = rubikCube[25];
+        rubikCube[24] = tmp2;
+        rubikCube[25] = tmp3;
+        rubikCube[26] = tmp4;
+
+        rubikCube[6].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[7].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[8].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[15].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[16].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[17].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[24].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[25].increase_rots(0.0, 0.0, -90.0);
+        rubikCube[26].increase_rots(0.0, 0.0, -90.0);
+    }else{
+        Cube tmp1 = rubikCube[6];
+        Cube tmp2 = rubikCube[7];
+        Cube tmp3 = rubikCube[17];
+        Cube tmp4 = rubikCube[8];
+
+        rubikCube[6]  = rubikCube[24];
+        rubikCube[7]  = rubikCube[15];
+        rubikCube[8]  = tmp1;
+        rubikCube[15] = rubikCube[25];
+        rubikCube[16] = rubikCube[16];
+        rubikCube[17] = tmp2;
+        rubikCube[24] = rubikCube[26];
+        rubikCube[25] = tmp3;
+        rubikCube[26] = tmp4;
+
+        rubikCube[6].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[7].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[8].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[15].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[16].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[17].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[24].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[25].increase_rots(0.0, 0.0, 90.0);
+        rubikCube[26].increase_rots(0.0, 0.0, 90.0);
+    }
+}
+
+void OpenGLContext::rotateFront(bool clockWise){
+    if(clockWise){
+        Cube tmp1 = rubikCube[3];
+        Cube tmp2 = rubikCube[6];
+        Cube tmp3 = rubikCube[15];
+        Cube tmp4 = rubikCube[24];
+
+        rubikCube[6]  = rubikCube[0];
+        rubikCube[3]  = rubikCube[9];
+        rubikCube[0]  = rubikCube[18];
+        rubikCube[15]  = tmp1;
+        rubikCube[12] = rubikCube[12];
+        rubikCube[9] = rubikCube[21];
+        rubikCube[24] = tmp2;
+        rubikCube[21] = tmp3;
+        rubikCube[18] = tmp4;
+
+        rubikCube[6].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[3].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[0].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[15].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[12].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[9].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[24].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[21].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[18].increase_rots(90.0, 0.0, 0.0);
+    }else{
+        Cube tmp1 = rubikCube[6];
+        Cube tmp2 = rubikCube[3];
+        Cube tmp3 = rubikCube[9];
+        Cube tmp4 = rubikCube[0];
+
+        rubikCube[6]  = rubikCube[24];
+        rubikCube[3]  = rubikCube[15];
+        rubikCube[0]  = tmp1;
+        rubikCube[15]  = rubikCube[21];
+        rubikCube[12] = rubikCube[12];
+        rubikCube[9] = tmp2;
+        rubikCube[24] = rubikCube[18];
+        rubikCube[21] = tmp3;
+        rubikCube[18] = tmp4;
+
+        rubikCube[6].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[3].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[0].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[15].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[12].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[9].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[24].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[21].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[18].increase_rots(-90.0, 0.0, 0.0);
+    }
+}
+
+void OpenGLContext::rotateBack(bool clockWise){
+    if(clockWise){
+        Cube tmp1 = rubikCube[5];
+        Cube tmp2 = rubikCube[2];
+        Cube tmp3 = rubikCube[11];
+        Cube tmp4 = rubikCube[20];
+
+        rubikCube[2]  = rubikCube[8];
+        rubikCube[5]  = rubikCube[17];
+        rubikCube[8]  = rubikCube[26];
+        rubikCube[11] = tmp1;
+        rubikCube[14] = rubikCube[14];
+        rubikCube[17] = rubikCube[23];
+        rubikCube[20] = tmp2;
+        rubikCube[23] = tmp3;
+        rubikCube[26] = tmp4;
+
+        rubikCube[2].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[5].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[8].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[11].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[14].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[17].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[20].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[23].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[26].increase_rots(-90.0, 0.0, 0.0);
+    }else{
+        Cube tmp1 = rubikCube[2];
+        Cube tmp2 = rubikCube[5];
+        Cube tmp3 = rubikCube[17];
+        Cube tmp4 = rubikCube[8];
+
+        rubikCube[2]  = rubikCube[20];
+        rubikCube[5]  = rubikCube[11];
+        rubikCube[8]  = tmp1;
+        rubikCube[11]  = rubikCube[23];
+        rubikCube[14] = rubikCube[14];
+        rubikCube[17] = tmp2;
+        rubikCube[20] = rubikCube[26];
+        rubikCube[23] = tmp3;
+        rubikCube[26] = tmp4;
+
+        rubikCube[2].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[5].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[8].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[11].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[14].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[17].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[20].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[23].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[26].increase_rots(90.0, 0.0, 0.0);
+    }
+}
+
+void OpenGLContext::rotateUp(bool clockWise){
+    if(clockWise){
+        Cube tmp1 = rubikCube[19];
+        Cube tmp2 = rubikCube[18];
+        Cube tmp3 = rubikCube[21];
+        Cube tmp4 = rubikCube[24];
+
+        rubikCube[18]  = rubikCube[20];
+        rubikCube[19]  = rubikCube[23];
+        rubikCube[20]  = rubikCube[26];
+        rubikCube[21]  = tmp1;
+        rubikCube[22] = rubikCube[22];
+        rubikCube[23] = rubikCube[25];
+        rubikCube[24] = tmp2;
+        rubikCube[25] = tmp3;
+        rubikCube[26] = tmp4;
+
+        rubikCube[18].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[19].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[20].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[21].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[22].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[23].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[24].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[25].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[26].increase_rots(0.0, -90.0, 0.0);
+
+    }else{
+        Cube tmp1 = rubikCube[18];
+        Cube tmp2 = rubikCube[19];
+        Cube tmp3 = rubikCube[23];
+        Cube tmp4 = rubikCube[20];
+
+        rubikCube[18]  = rubikCube[24];
+        rubikCube[19]  = rubikCube[21];
+        rubikCube[20]  = tmp1;
+        rubikCube[21]  = rubikCube[25];
+        rubikCube[22] = rubikCube[22];
+        rubikCube[23] = tmp2;
+        rubikCube[24] = rubikCube[26];
+        rubikCube[25] = tmp3;
+        rubikCube[26] = tmp4;
+
+        rubikCube[18].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[19].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[20].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[21].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[22].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[23].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[24].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[25].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[26].increase_rots(0.0, 90.0, 0.0);
+    }
+}
+
+void OpenGLContext::rotateDown(bool clockWise){
+    if(clockWise){
+        Cube tmp1 = rubikCube[1];
+        Cube tmp2 = rubikCube[0];
+        Cube tmp3 = rubikCube[3];
+        Cube tmp4 = rubikCube[6];
+
+        rubikCube[0]  = rubikCube[2];
+        rubikCube[1]  = rubikCube[5];
+        rubikCube[2]  = rubikCube[8];
+        rubikCube[3]  = tmp1;
+        rubikCube[4] = rubikCube[4];
+        rubikCube[5] = rubikCube[7];
+        rubikCube[6] = tmp2;
+        rubikCube[7] = tmp3;
+        rubikCube[8] = tmp4;
+
+        rubikCube[0].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[1].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[2].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[3].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[4].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[5].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[6].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[7].increase_rots(0.0, -90.0, 0.0);
+        rubikCube[8].increase_rots(0.0, -90.0, 0.0);
+    }else{
+        Cube tmp1 = rubikCube[0];
+        Cube tmp2 = rubikCube[1];
+        Cube tmp3 = rubikCube[5];
+        Cube tmp4 = rubikCube[2];
+
+        rubikCube[0]  = rubikCube[6];
+        rubikCube[1]  = rubikCube[3];
+        rubikCube[2]  = tmp1;
+        rubikCube[3]  = rubikCube[7];
+        rubikCube[4] = rubikCube[4];
+        rubikCube[5] = tmp2;
+        rubikCube[6] = rubikCube[8];
+        rubikCube[7] = tmp3;
+        rubikCube[8] = tmp4;
+
+        rubikCube[0].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[1].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[2].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[3].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[4].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[5].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[6].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[7].increase_rots(0.0, 90.0, 0.0);
+        rubikCube[8].increase_rots(0.0, 90.0, 0.0);
     }
 }
 
@@ -762,64 +646,6 @@ void OpenGLContext::geomCoordSys(GLfloat size)
     glEnd();
 
     glColor3f(currentColor[0], currentColor[1], currentColor[2]);
-}
-
-void OpenGLContext::drawCurrentCube(int indexCube){
-    if(indexCube==1){
-        glutTexturedCube1(1);
-    }else if(indexCube==2){
-        glutTexturedCube2(1);
-    }else if(indexCube==3){
-        glutTexturedCube3(1);
-    }else if(indexCube==4){
-        glutTexturedCube4(1);
-    }else if(indexCube==5){
-        glutTexturedCube5(1);
-    }else if(indexCube==6){
-        glutTexturedCube6(1);
-    }else if(indexCube==7){
-        glutTexturedCube7(1);
-    }else if(indexCube==8){
-        glutTexturedCube8(1);
-    }else if(indexCube==9){
-        glutTexturedCube9(1);
-    }else if(indexCube==10){
-        glutTexturedCube10(1);
-    }else if(indexCube==11){
-        glutTexturedCube11(1);
-    }else if(indexCube==12){
-        glutTexturedCube12(1);
-    }else if(indexCube==13){
-        glutTexturedCube13(1);
-    }else if(indexCube==14){
-        glutTexturedCube14(1);
-    }else if(indexCube==15){
-        glutTexturedCube15(1);
-    }else if(indexCube==16){
-        glutTexturedCube16(1);
-    }else if(indexCube==17){
-        glutTexturedCube17(1);
-    }else if(indexCube==18){
-        glutTexturedCube18(1);
-    }else if(indexCube==19){
-        glutTexturedCube19(1);
-    }else if(indexCube==20){
-        glutTexturedCube20(1);
-    }else if(indexCube==21){
-        glutTexturedCube21(1);
-    }else if(indexCube==22){
-        glutTexturedCube22(1);
-    }else if(indexCube==23){
-        glutTexturedCube23(1);
-    }else if(indexCube==24){
-        glutTexturedCube24(1);
-    }else if(indexCube==25){
-        glutTexturedCube25(1);
-    }else if(indexCube==26){
-        glutTexturedCube26(1);
-    }else if(indexCube==27){
-        glutTexturedCube27(1);
-    }
 }
 
 void OpenGLContext::perspectiveGL( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar )

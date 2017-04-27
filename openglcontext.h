@@ -11,6 +11,7 @@
 #include <cmath>
 #include <vector>
 #include <mainwindow.h>
+#include <Cubo.h>
 
 using namespace std;
 
@@ -34,42 +35,19 @@ public slots:
 private:
     void glutTexturedCubeBase(GLdouble size, GLfloat* color1, GLfloat* color2, GLfloat* color3,
                                             GLfloat* color4,GLfloat* color5, GLfloat* color6);
-    void glutTexturedCube1(GLdouble size);
-    void glutTexturedCube2(GLdouble size);
-    void glutTexturedCube3(GLdouble size);
-    void glutTexturedCube4(GLdouble size);
-    void glutTexturedCube5(GLdouble size);
-    void glutTexturedCube6(GLdouble size);
-    void glutTexturedCube7(GLdouble size);
-    void glutTexturedCube8(GLdouble size);
-    void glutTexturedCube9(GLdouble size);
-    void glutTexturedCube10(GLdouble size);
-    void glutTexturedCube11(GLdouble size);
-    void glutTexturedCube12(GLdouble size);
-    void glutTexturedCube13(GLdouble size);
-    void glutTexturedCube14(GLdouble size);
-    void glutTexturedCube15(GLdouble size);
-    void glutTexturedCube16(GLdouble size);
-    void glutTexturedCube17(GLdouble size);
-    void glutTexturedCube18(GLdouble size);
-    void glutTexturedCube19(GLdouble size);
-    void glutTexturedCube20(GLdouble size);
-    void glutTexturedCube21(GLdouble size);
-    void glutTexturedCube22(GLdouble size);
-    void glutTexturedCube23(GLdouble size);
-    void glutTexturedCube24(GLdouble size);
-    void glutTexturedCube25(GLdouble size);
-    void glutTexturedCube26(GLdouble size);
-    void glutTexturedCube27(GLdouble size);
     void rotateRight(bool clockWise);
+    void rotateLeft(bool clockWise);
+    void rotateFront(bool clockWise);
+    void rotateBack(bool clockWise);
+    void rotateUp(bool clockWise);
+    void rotateDown(bool clockWise);
+
     void geomCoordSys(GLfloat size);
-    void drawCurrentCube(int indexCube);
     void perspectiveGL( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar );
 
 
 
 private:
-
     // Tamaño de la ventana
     GLint width = 800;
     GLint height = 600;
@@ -92,6 +70,8 @@ private:
     GLfloat rot = 0.;
     float spaceBetweenCubes = 2.1f;
 
+    // Cube rubikCube[27];
+    std::vector<Cube> rubikCube;
 
     vector<int> idOfCubes;
 

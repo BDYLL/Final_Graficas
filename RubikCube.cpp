@@ -6,6 +6,7 @@
 #include <vector>
 #include "Cubo.h"
 
+/*
 using namespace std;
 
 // Tamaño de la ventana
@@ -673,6 +674,7 @@ void specialKeyboard(int key, int x, int y)
     glutPostRedisplay();
 }
 
+/*
 int main(GLint argc, GLchar **argv)
 {
     // 1. Se crea una ventana y un contexto OpenGL usando GLUT
@@ -702,3 +704,4 @@ int main(GLint argc, GLchar **argv)
     glutMainLoop();
     return 0;
 }
+*/

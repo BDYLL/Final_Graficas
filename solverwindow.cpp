@@ -40,5 +40,5 @@ void SolverWindow::resolveRubikCube(){
     QString path = QDir::currentPath();
     cout << path.toStdString() <<endl;
 
-    mixedMethod(v.size(), v);
+    //mixedMethod(v.size(), v);
 }

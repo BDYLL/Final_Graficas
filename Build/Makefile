@@ -56,7 +56,9 @@ SOURCES       = ../main.cpp \
 		../solverwindow.cpp \
 		../main_gl.cpp \
 		../openglcontext.cpp \
-		../rubiksolveralgorithms.cpp moc_mainwindow.cpp \
+		../rubiksolveralgorithms.cpp \
+		../RubikCube.cpp \
+		../Cubo.cpp moc_mainwindow.cpp \
 		moc_cvimagewidget.cpp \
 		moc_rubikscanner.cpp \
 		moc_rubikpreview.cpp \
@@ -71,6 +73,8 @@ OBJECTS       = main.o \
 		main_gl.o \
 		openglcontext.o \
 		rubiksolveralgorithms.o \
+		RubikCube.o \
+		Cubo.o \
 		moc_mainwindow.o \
 		moc_cvimagewidget.o \
 		moc_rubikscanner.o \
@@ -257,7 +261,8 @@ DIST          = ../rubiks.py \
 		../openglcontext.h \
 		../constans.h \
 		../rubiksolveralgorithms.h \
-		../pyhelper.h ../main.cpp \
+		../pyhelper.h \
+		../Cubo.h ../main.cpp \
 		../mainwindow.cpp \
 		../rubikscanner.cpp \
 		../hsvcolorrange.cpp \
@@ -265,7 +270,9 @@ DIST          = ../rubiks.py \
 		../solverwindow.cpp \
 		../main_gl.cpp \
 		../openglcontext.cpp \
-		../rubiksolveralgorithms.cpp
+		../rubiksolveralgorithms.cpp \
+		../RubikCube.cpp \
+		../Cubo.cpp
 QMAKE_TARGET  = Rubik_Cube_Solver
 DESTDIR       = 
 TARGET        = Rubik_Cube_Solver
@@ -643,8 +650,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../mainwindow.h ../cvimagewidget.h ../rubikscanner.h ../hsvcolorrange.h ../rubikpreview.h ../solverwindow.h ../openglcontext.h ../constans.h ../rubiksolveralgorithms.h ../pyhelper.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../rubikscanner.cpp ../hsvcolorrange.cpp ../rubikpreview.cpp ../solverwindow.cpp ../main_gl.cpp ../openglcontext.cpp ../rubiksolveralgorithms.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../mainwindow.h ../cvimagewidget.h ../rubikscanner.h ../hsvcolorrange.h ../rubikpreview.h ../solverwindow.h ../openglcontext.h ../constans.h ../rubiksolveralgorithms.h ../pyhelper.h ../Cubo.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../rubikscanner.cpp ../hsvcolorrange.cpp ../rubikpreview.cpp ../solverwindow.cpp ../main_gl.cpp ../openglcontext.cpp ../rubiksolveralgorithms.cpp ../RubikCube.cpp ../Cubo.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../mainwindow.ui ../solverwindow.ui $(DISTDIR)/
 
 
@@ -2015,7 +2022,10 @@ solverwindow.o: ../solverwindow.cpp ../solverwindow.h \
 		../../../Qt/5.8/gcc_64/include/QtCore/QThread \
 		../../../Qt/5.8/gcc_64/include/QtCore/qthread.h \
 		../hsvcolorrange.h \
-		../rubikpreview.h
+		../rubikpreview.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/QDir \
+		../../../Qt/5.8/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o solverwindow.o ../solverwindow.cpp
 
 main_gl.o: ../main_gl.cpp 
@@ -2154,12 +2164,75 @@ openglcontext.o: ../openglcontext.cpp ../openglcontext.h \
 		../hsvcolorrange.h \
 		../rubikpreview.h \
 		../solverwindow.h \
-		../rubiksolveralgorithms.h
+		../rubiksolveralgorithms.h \
+		../Cubo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o openglcontext.o ../openglcontext.cpp
 
 rubiksolveralgorithms.o: ../rubiksolveralgorithms.cpp ../rubiksolveralgorithms.h \
-		../pyhelper.h
+		../pyhelper.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/QObject \
+		../../../Qt/5.8/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qpair.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/QDir \
+		../../../Qt/5.8/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qfile.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qfiledevice.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.8/gcc_64/include/QtCore/qhash.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rubiksolveralgorithms.o ../rubiksolveralgorithms.cpp
+
+RubikCube.o: ../RubikCube.cpp ../Cubo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RubikCube.o ../RubikCube.cpp
+
+Cubo.o: ../Cubo.cpp ../Cubo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Cubo.o ../Cubo.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
