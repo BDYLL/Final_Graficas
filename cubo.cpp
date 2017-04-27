@@ -42,12 +42,12 @@ GLfloat colorBlack[]  = {  0,   0,  0};
 */
 
 class Cube {
-    GLfloat color[];
+    GLfloat color[108];
     float rotX;
     float rotY;
     float rotZ;
 
-    GLfloat vert[] = {
+    GLfloat vert[108] = {
         // top (+z)
         -1, -1,  1,
          1, -1,  1,
@@ -97,7 +97,7 @@ class Cube {
          1,  1,  1,
     };
 
-    GLushort idxs[] = { 
+    GLushort idxs[36] = {
         0, 1, 2, 
         3, 4, 5,
 
@@ -140,6 +140,7 @@ class Cube {
         glDisableClientState(GL_COLOR_ARRAY);
         glDisableClientState(GL_VERTEX_ARRAY);
     }
+    void set_rots (float rX, float rY, float rZ);
 };
 
 Cube::Cube (GLfloat* color1, GLfloat* color2, GLfloat* color3,
@@ -148,7 +149,7 @@ Cube::Cube (GLfloat* color1, GLfloat* color2, GLfloat* color3,
     rotY = rY;
     rotZ = rZ;
 
-    color[] = {
+    GLfloat tmp[] = {
         color1[0], color1[1], color1[2],
         color1[0], color1[1], color1[2],
         color1[0], color1[1], color1[2],
@@ -189,14 +190,16 @@ Cube::Cube (GLfloat* color1, GLfloat* color2, GLfloat* color3,
         color6[0], color6[1], color6[2],
         color6[0], color6[1], color6[2],
         color6[0], color6[1], color6[2],
-        color6[0], color6[1], color6[2],
+        color6[0], color6[1], color6[2]
     };
+
+    copy(begin(tmp),end(tmp),begin(color));
 
 }
 
 void Cube::set_colors (GLfloat* color1, GLfloat* color2, GLfloat* color3,
                     GLfloat* color4,GLfloat* color5, GLfloat* color6) {
-    color[] = {
+    GLfloat tmp[] = {
         color1[0], color1[1], color1[2],
         color1[0], color1[1], color1[2],
         color1[0], color1[1], color1[2],
@@ -239,10 +242,13 @@ void Cube::set_colors (GLfloat* color1, GLfloat* color2, GLfloat* color3,
         color6[0], color6[1], color6[2],
         color6[0], color6[1], color6[2],
     };
+
+    copy(begin(tmp),end(tmp),begin(color));
+
 }
 
 void Cube::set_rots (float rX, float rY, float rZ) {
-    rotX = rx;
+    rotX = rX;
     rotY = rY;
     rotZ = rZ;
 }
