@@ -111,8 +111,31 @@ void Cube::set_rots (float rX, float rY, float rZ) {
     rotZ = rZ;
 }
 
+float Cube::get_rotX () {
+    return rotX;
+}
+
+float Cube::get_rotY () {
+    return rotY;
+}
+
+float Cube::get_rotZ () {
+    return rotZ;
+}
+
 void Cube::increase_rots (float rX, float rY, float rZ) {
     rotX += rX;
     rotY += rY;
     rotZ += rZ;
+
+    if(rotX==360.0 || rotX==-360.0){
+        rotX=0.0;
+    }
+    if(rotY==360.0 || rotY==-360.0){
+        rotY=0.0;
+    }
+    if(rotZ==360.0 || rotZ==-360.0){
+        rotZ=0.0;
+    }
+
 }

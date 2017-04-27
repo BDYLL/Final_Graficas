@@ -6,9 +6,9 @@
 
 class Cube {
     GLfloat color[108];
-    float rotX;
-    float rotY;
-    float rotZ;
+    float rotX =0;
+    float rotY =0;
+    float rotZ =0;
 
     GLfloat vert[108] = {
         // top (+z)
@@ -85,6 +85,9 @@ class Cube {
     // GLfloat representa el color de una de las caras: {1.0, 1.0, 1.0}
     void set_colors (GLfloat*,GLfloat*,GLfloat*,GLfloat*,GLfloat*,GLfloat*);
     void set_colors (float, float, float);
+    float get_rotX();
+    float get_rotY();
+    float get_rotZ();
     void paint () {
         glEnableClientState(GL_COLOR_ARRAY);
         glEnableClientState(GL_VERTEX_ARRAY);
@@ -92,11 +95,11 @@ class Cube {
         glVertexPointer(3, GL_FLOAT, 0, vert);
 
         glPushMatrix();
-        glColor4f(1, 1, 1, 1);
-        glScaled(1, 1, 1);
         glRotatef(rotX, 1.0, 0.0, 0.0);
         glRotatef(rotY, 0.0, 1.0, 0.0);
-        glRotatef(rotZ, 0.0, 0.0, 1.0);
+        glRotatef(rotZ, 0.0, 0.0, 1.0);        
+        glColor4f(1, 1, 1, 1);
+        glScaled(1, 1, 1);
         glDrawElements(GL_TRIANGLES, sizeof(idxs)/sizeof(idxs[0]), GL_UNSIGNED_SHORT, idxs);
         glPopMatrix();
 

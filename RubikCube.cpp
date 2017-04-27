@@ -152,7 +152,7 @@ void rotateFront(bool clockWise){
         rubikCube[3]  = rubikCube[9];
         rubikCube[0]  = rubikCube[18];
         rubikCube[15]  = tmp1;
-        rubikCube[13] = rubikCube[13];
+        rubikCube[12] = rubikCube[12];
         rubikCube[9] = rubikCube[21];       
         rubikCube[24] = tmp2;
         rubikCube[21] = tmp3;
@@ -162,7 +162,7 @@ void rotateFront(bool clockWise){
         rubikCube[3].increase_rots(90.0, 0.0, 0.0);
         rubikCube[0].increase_rots(90.0, 0.0, 0.0);
         rubikCube[15].increase_rots(90.0, 0.0, 0.0);
-        rubikCube[13].increase_rots(90.0, 0.0, 0.0);
+        rubikCube[12].increase_rots(90.0, 0.0, 0.0);
         rubikCube[9].increase_rots(90.0, 0.0, 0.0);
         rubikCube[24].increase_rots(90.0, 0.0, 0.0);
         rubikCube[21].increase_rots(90.0, 0.0, 0.0);
@@ -177,7 +177,7 @@ void rotateFront(bool clockWise){
         rubikCube[3]  = rubikCube[15];
         rubikCube[0]  = tmp1;
         rubikCube[15]  = rubikCube[21];
-        rubikCube[13] = rubikCube[13];
+        rubikCube[12] = rubikCube[12];
         rubikCube[9] = tmp2;
         rubikCube[24] = rubikCube[18];
         rubikCube[21] = tmp3;
@@ -187,7 +187,7 @@ void rotateFront(bool clockWise){
         rubikCube[3].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[0].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[15].increase_rots(-90.0, 0.0, 0.0);
-        rubikCube[13].increase_rots(-90.0, 0.0, 0.0);
+        rubikCube[12].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[9].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[24].increase_rots(-90.0, 0.0, 0.0);
         rubikCube[21].increase_rots(-90.0, 0.0, 0.0);
@@ -205,7 +205,7 @@ void rotateBack(bool clockWise){
         rubikCube[2]  = rubikCube[8];
         rubikCube[5]  = rubikCube[17];
         rubikCube[8]  = rubikCube[26];
-        rubikCube[11]  = tmp1;
+        rubikCube[11] = tmp1;
         rubikCube[14] = rubikCube[14];
         rubikCube[17] = rubikCube[23];      
         rubikCube[20] = tmp2;
@@ -265,7 +265,7 @@ void rotateUp(bool clockWise){
         rubikCube[24] = tmp2;
         rubikCube[25] = tmp3;
         rubikCube[26] = tmp4;
-  
+
         rubikCube[18].increase_rots(0.0, -90.0, 0.0);
         rubikCube[19].increase_rots(0.0, -90.0, 0.0);
         rubikCube[20].increase_rots(0.0, -90.0, 0.0);
@@ -274,8 +274,8 @@ void rotateUp(bool clockWise){
         rubikCube[23].increase_rots(0.0, -90.0, 0.0);
         rubikCube[24].increase_rots(0.0, -90.0, 0.0);
         rubikCube[25].increase_rots(0.0, -90.0, 0.0);
-        rubikCube[26].increase_rots(0.0, -90.0, 0.0); 
-  
+        rubikCube[26].increase_rots(0.0, -90.0, 0.0);   
+
     }else{
         Cube tmp1 = rubikCube[18];
         Cube tmp2 = rubikCube[19];
@@ -471,25 +471,18 @@ void render()
     glTranslatef(panX, panY, zoomZ);
     glRotatef(rotY, 1.0, 0.0, 0.0);
     glRotatef(rotX, 0.0, 1.0, 0.0);
-
     // Escena
-    geomCoordSys(2.f);  
-
 
     //##############
     //      Pinta el primer nivel
     //##############
 
-
-    //glutTexturedCube1(1);
     rubikCube[0].paint();
 
     glPushMatrix();
         glTranslatef(spaceBetweenCubes,0.f,0.f);
-        //glutTexturedCube2(1);
         rubikCube[1].paint();
         glTranslatef(spaceBetweenCubes,0.f,0.f);        
-        //glutTexturedCube3(1);
         rubikCube[2].paint();
     glPopMatrix();
 
@@ -541,11 +534,13 @@ void render()
             glTranslatef(spaceBetweenCubes,0.f,0.f);        
             rubikCube[17].paint();
         glPopMatrix();
+    glPopMatrix();
 
-        //##############
-        //      Pinta el tercer nivel
-        //##############
-        glTranslatef(0.f, spaceBetweenCubes, 0.f);
+    //##############
+    //      Pinta el tercer nivel
+    //##############
+    glPushMatrix();
+        glTranslatef(0.f, spaceBetweenCubes*2, 0.f);
         rubikCube[18].paint();
 
         glPushMatrix();
@@ -651,40 +646,28 @@ void mouseMotion(int x, int y)
 void specialKeyboard(int key, int x, int y)
 {
     if(key == 1){
-        // F1       
         rotateRight(true);
     }else if(key == 2){
-        // F2
         rotateRight(false);
     }else if(key == 3){
-        // F3       
         rotateLeft(true);
     }else if(key == 4){
-        // F4
         rotateLeft(false);
     }else if(key == 5){
-        // F5
         rotateFront(true);
     }else if(key == 6){
-        // F6
         rotateFront(false);
     }else if(key == 7){
-        // F7
         rotateBack(true);
     }else if(key == 8){
-        // F8
         rotateBack(false);
     }else if(key == 9){
-        // F9
         rotateUp(true);
     }else if(key == 10){
-        // F10
         rotateUp(false);
     }else if(key == 11){
-        // F11
         rotateDown(true);
     }else if(key == 12){
-        // F12
         rotateDown(false);
     }
     glutPostRedisplay();
