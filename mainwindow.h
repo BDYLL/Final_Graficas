@@ -23,9 +23,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+signals:
+    void sendCubeData(vector<vector<vector<int>>> faces);
+
 public slots:
     void openSolverWindow();
-    void restoreWindow();
+    void restoreWindow();    
 
 private slots:
     //Display video frame in player UI

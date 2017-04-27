@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(scanner, SIGNAL(videoStream(Mat)), this, SLOT(updatePlayerUI(Mat)));
     scanner->Play();
 
+    solverWindow = new SolverWindow();
+    QObject::connect(this, SIGNAL(sendCubeData(vector<vector<vector<int>>>)), this->solverWindow, SLOT(receiveCubeData(vector<vector<vector<int>>>)));
+    QObject::connect(this->solverWindow, SIGNAL(restoreMainWindow()), this, SLOT(restoreWindow()));
 }
 
 void MainWindow::updatePlayerUI(Mat img)
@@ -69,18 +72,20 @@ void MainWindow::on_nextScannedFace_clicked()
 
 void MainWindow::on_finishScan_clicked()
 {
+    this->scanner->Stop();
     this->hide();
     openSolverWindow();
 }
 
 void MainWindow::restoreWindow(){
     this->show();
+    this->scanner->Play();
 }
 
 void MainWindow::openSolverWindow(){
-    solverWindow = new SolverWindow();
-    QObject::connect(this->solverWindow, SIGNAL(restoreMainWindow()), this, SLOT(restoreWindow()));
     solverWindow->show();
+    cout << "Sending data..." << endl;
+    emit sendCubeData(this->faces);
 }
 
 void MainWindow::on_facesListView_clicked(const QModelIndex &index)

@@ -14,7 +14,8 @@ class RubikScanner : public QThread
     Q_OBJECT
 
 private:
-    bool stop;
+    VideoCapture *cap_p;
+    bool stopped;
     Mat drawUISquares(int v_height, int v_width, int quad_size, int quad_distance);
     Mat drawHudCube(Mat imgOriginal, int result[][3], vector<Scalar> colors, Scalar invalid_color, int size);
     int identifyColor( Mat img, vector<HSVColorRange> ranges);
@@ -36,6 +37,7 @@ public:
     RubikScanner(QObject *parent = 0);
     vector<vector<int>> getCurrentFace();
     void Play();
+    void Stop();
     ~RubikScanner();
 
 };

@@ -2,7 +2,7 @@
 
 RubikScanner::RubikScanner(QObject *parent) :QThread(parent)
 {
-    this->stop = true;
+    this->stopped = false;
 
     HSVColorRange orangeRange (Scalar(7, 60, 130), Scalar(22, 255, 255));
     HSVColorRange yellowRange (Scalar(22, 60, 130), Scalar(38, 255, 255));
@@ -32,6 +32,9 @@ void RubikScanner::Play()
 
 void RubikScanner::run(){
     VideoCapture cap(0);
+    this->cap_p = &cap;
+
+    this->stopped = false;
 
     if(!cap.isOpened()){
         cout << "Cannot open the web cam" << endl;
@@ -42,7 +45,7 @@ void RubikScanner::run(){
 
     bool bSuccess = cap.read(imgOriginal); // read a new frame from video
 
-    if (!bSuccess) //if not success, break loop
+    if (!bSuccess && !this->stopped ) //if not success, break loop
     {
         cout << "Cannot read a frame from video stream" << endl;
     }
@@ -131,6 +134,8 @@ void RubikScanner::run(){
         //imshow("Cuadrito", quad);
 
     }
+
+    cap.release();
 
 }
 
@@ -294,6 +299,13 @@ vector<vector<int>> RubikScanner::getCurrentFace(){
     }
 
     return currentFace;
+}
+
+
+void RubikScanner::Stop(){
+    this->stopped = true;
+    this->cap_p->release();
+    cout << "Stopping camera..." << endl;
 }
 
 

@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     rubikpreview.cpp \
     solverwindow.cpp \
     main_gl.cpp \
-    openglcontext.cpp
+    openglcontext.cpp \
+    rubiksolveralgorithms.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -42,7 +43,8 @@ HEADERS  += \
     hsvcolorrange.h \
     rubikpreview.h \
     solverwindow.h \
-    openglcontext.h
+    openglcontext.h \
+    constans.h
 
 FORMS    += mainwindow.ui \
     solverwindow.ui
