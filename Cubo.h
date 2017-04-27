@@ -1,3 +1,9 @@
+#ifndef CUBO_H
+#define CUBO_H
+
+#include <GL/glew.h>
+#include <GL/freeglut.h>
+
 class Cube {
     GLfloat color[108];
     float rotX;
@@ -99,3 +105,5 @@ class Cube {
     }
     void set_rots (float rX, float rY, float rZ);
 };
+
+#endif

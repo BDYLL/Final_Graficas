@@ -1,4 +1,5 @@
 #include "Cubo.h"
+#include <iostream>
 
 Cube::Cube (GLfloat* color1, GLfloat* color2, GLfloat* color3,
             GLfloat* color4,GLfloat* color5, GLfloat* color6, float rX, float rY, float rZ) {
@@ -50,7 +51,7 @@ Cube::Cube (GLfloat* color1, GLfloat* color2, GLfloat* color3,
         color6[0], color6[1], color6[2]
     };
 
-    copy(begin(tmp),end(tmp),begin(color));
+    std::copy(std::begin(tmp),std::end(tmp),std::begin(color));
 
 }
 
@@ -100,7 +101,7 @@ void Cube::set_colors (GLfloat* color1, GLfloat* color2, GLfloat* color3,
         color6[0], color6[1], color6[2],
     };
 
-    copy(begin(tmp),end(tmp),begin(color));
+    std::copy(std::begin(tmp),std::end(tmp),std::begin(color));
 
 }
 

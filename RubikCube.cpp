@@ -30,9 +30,10 @@ GLfloat zoomZ = -55.f;
 GLfloat rot = 0.;
 float spaceBetweenCubes = 2.1f;
 
+
+
 // Cube rubikCube[27];
 std::vector<Cube> rubikCube;
-rubikCube.resize(27);
 
 /*
 //White Red
@@ -605,6 +606,8 @@ void rotateDown(bool clockWise){
 // Función que inicializa el Contexto OpenGL y la geometría de la escena
 void init()
 {
+
+    //rubikCube.resize(27);
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glColor3f(1.f, 1.f, 1.f);
     glEnable(GL_DEPTH_TEST);
@@ -619,6 +622,9 @@ void init()
 	GLfloat colorWhite[]  = {1.0, 1.0, 1.0 };
 	GLfloat colorBlack[]  = {  0,   0,   0 };
 
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    /*
 	rubikCube[0] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0);	
 	rubikCube[1] = Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
     rubikCube[2] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
@@ -648,6 +654,7 @@ void init()
     rubikCube[24] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0); 
     rubikCube[25] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
     rubikCube[26] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
+     */
 }
 
 // Función que se invoca cada vez que se redimensiona la ventana
