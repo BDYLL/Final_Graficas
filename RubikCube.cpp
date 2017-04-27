@@ -622,35 +622,116 @@ void init()
 	GLfloat colorWhite[]  = {1.0, 1.0, 1.0 };
 	GLfloat colorBlack[]  = {  0,   0,   0 };
 
+    /*
     rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+
+
+    */
+
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
+    rubikCube.push_back(Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0));
 
     /*
 	rubikCube[0] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0);	
 	rubikCube[1] = Cube(colorRed, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[2] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[3] = Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[4] = Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[5] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[6] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[7] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);     
-    rubikCube[8] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[9] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
+    rubikCube[2] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);
 
+    rubikCube[3] = Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0);
+    rubikCube[4] = Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0); 
+    rubikCube[5] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);
+
+    rubikCube[6] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorWhite,colorBlack, 0.0, 0.0, 0.0);
+    rubikCube[7] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);     
+    rubikCube[8] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorWhite,colorBlack, 0.0, 0.0, 0.0);
+
+    rubikCube[9] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0);
     rubikCube[10] = Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[11] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
+    rubikCube[11] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
+
     rubikCube[12] = Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0);
     rubikCube[13] = Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
-    rubikCube[14] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
+    rubikCube[14] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
+
     rubikCube[15] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
     rubikCube[16] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
-    rubikCube[17] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0); 
+    rubikCube[17] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorBlack, 0.0, 0.0, 0.0);
+
     rubikCube[18] = Cube(colorRed, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0);
     rubikCube[19] = Cube(colorRed, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
+    rubikCube[20] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
 
-    rubikCube[20] = Cube(colorRed, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0); 
     rubikCube[21] = Cube(colorBlack, colorBlack, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0);
     rubikCube[22] = Cube(colorBlack, colorBlack, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
     rubikCube[23] = Cube(colorBlack, colorBlack, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
+
     rubikCube[24] = Cube(colorBlack, colorOrange, colorBlack, colorBlue, colorBlack,colorYellow, 0.0, 0.0, 0.0); 
     rubikCube[25] = Cube(colorBlack, colorOrange, colorBlack, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
     rubikCube[26] = Cube(colorBlack, colorOrange, colorGreen, colorBlack, colorBlack,colorYellow, 0.0, 0.0, 0.0);
